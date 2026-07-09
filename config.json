@@ -1,0 +1,45 @@
+{
+  "api": {
+    "provider": "alphavantage",
+    "baseUrl": "https://www.alphavantage.co/query",
+    "budget": {
+      "callsPerMinute": 5,
+      "callsPerDay": 500
+    }
+  },
+  "kafka": {
+    "topics": {
+      "TIME_SERIES_INTRADAY": "stock.market.intraday",
+      "TIME_SERIES_DAILY": "stock.market.daily",
+      "OVERVIEW": "stock.company.overview",
+      "EARNINGS": "stock.company.earnings",
+      "NEWS_SENTIMENT": "stock.news"
+    }
+  },
+  "jobs": [
+    {
+      "dataset": "market-data",
+      "endpoint": "TIME_SERIES_INTRADAY",
+      "intervalHours": 1,
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "TSLA"]
+    },
+    {
+      "dataset": "market-data",
+      "endpoint": "TIME_SERIES_DAILY",
+      "intervalHours": 24,
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "TSLA"]
+    },
+    {
+      "dataset": "company-data",
+      "endpoint": "OVERVIEW",
+      "intervalHours": 168,
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "TSLA"]
+    },
+    {
+      "dataset": "company-data",
+      "endpoint": "EARNINGS",
+      "intervalHours": 168,
+      "symbols": ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "TSLA"]
+    }
+  ]
+}
